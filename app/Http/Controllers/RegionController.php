@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CountryRequest;
+use App\Http\Requests\RegionRequest;
 use App\Models\Country;
 use App\Models\Regions;
 use Illuminate\Http\Request;
 
-class CountryController extends Controller
+class RegionController extends Controller
 {
     /**
      * Show the form for creating a new resource.
@@ -16,7 +16,8 @@ class CountryController extends Controller
      */
     public function create()
     {   
-        return view('country-form');
+        $countries = Country::all();
+        return view('region-form',['countries' => $countries]);
     }
 
     /**
@@ -25,13 +26,14 @@ class CountryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CountryRequest $request)
+    public function store(RegionRequest $request)
     {
-        $country = new Country();
+        $region = new Regions();
         
-        $country->country_name = $request->input('country');
+        $region->region_name = $request->input('region');
+        $region->country_id = $request->input('country');
         
-        $country->save();
+        $region->save();
         
         return redirect('/home');
     }
@@ -41,56 +43,42 @@ class CountryController extends Controller
      *
      * @param  \App\Models\Country  $country
      * @param  \App\Models\Regions  $regions
-     * @param  \App\Models\Location  $locations
      * @return \Illuminate\Http\Response
      */
-    public function edit(Country $country)
+    public function edit(Regions $regions)
     {
-
-        return view('country-form', [
-            'country'  => $country,
-        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Country  $country
+     * @param  \App\Models\Regions  $Regions
      * @return \Illuminate\Http\Response
      */
-    public function update(CountryRequest $request, Country $country)
+    public function update(Request $request, Regions $regions)
     {
-        $country->country_name = $request->input('country');
-        
-        $country->save();
-        
-        return redirect('/home');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Country  $country
+     * @param  \App\Models\Regions  $region
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Country $country)
+    public function destroy(Regions $region)
     {
-        $country->delete();
+        $region->delete();
         return redirect('/home');
     }
 
     /**
      *
      * @param  \App\Models\Country  $country
+     * @param  \App\Models\Regions  $regions
      * @return \Illuminate\Http\Response
      */
-    public function show(Country $country)
+    public function show(Regions $regions)
     {   
-        $regions = Regions::all();
-        return view('show', [
-            'country'   => $country,
-            'regions'   => $regions
-        ]);
     }
 }

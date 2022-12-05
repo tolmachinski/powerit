@@ -2,6 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Country;
+use App\Models\Location;
+use App\Models\Regions;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,6 +16,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        Country::factory(9)->create();
+        Regions::factory(18)->create();
+        Location::factory(36)->create();
     }
 }

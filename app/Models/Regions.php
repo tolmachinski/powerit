@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Country extends Model
+class Regions extends Model
 {
     use HasFactory;
 
-    protected $table = 'countries';
+    protected $table = 'regions';
 
-    public function regions()
+    public function locations()
     {
-        return $this->hasMany('App\Models\Regions');
+        return $this->hasMany('App\Models\Location');
     }
 }
