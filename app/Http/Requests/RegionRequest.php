@@ -24,8 +24,8 @@ class RegionRequest extends FormRequest
     public function rules()
     {
         return [
-            'region_name' => 'required|min:3|max:50',
-            'country_id' => 'required',
+            'region' => 'required|min:3|max:50',
+            'country' => 'required',
         ];
     }
 }

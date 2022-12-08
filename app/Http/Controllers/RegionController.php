@@ -7,7 +7,7 @@ use App\Models\Country;
 use App\Models\Regions;
 use Illuminate\Http\Request;
 
-class RegionController extends Controller
+class RegionController extends BaseController
 {
     /**
      * Show the form for creating a new resource.
@@ -35,7 +35,7 @@ class RegionController extends Controller
         
         $region->save();
         
-        return redirect('/home');
+        return redirect('/main');
     }
 
     /**
@@ -69,7 +69,7 @@ class RegionController extends Controller
     public function destroy(Regions $region)
     {
         $region->delete();
-        return redirect('/home');
+        return redirect('/main');
     }
 
     /**

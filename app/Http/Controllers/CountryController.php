@@ -7,7 +7,7 @@ use App\Models\Country;
 use App\Models\Regions;
 use Illuminate\Http\Request;
 
-class CountryController extends Controller
+class CountryController extends BaseController
 {
     /**
      * Show the form for creating a new resource.
@@ -27,13 +27,9 @@ class CountryController extends Controller
      */
     public function store(CountryRequest $request)
     {
-        $country = new Country();
+        $this->service->countryStore($request);
         
-        $country->country_name = $request->input('country');
-        
-        $country->save();
-        
-        return redirect('/home');
+        return redirect('/main');
     }
 
     /**
@@ -61,11 +57,9 @@ class CountryController extends Controller
      */
     public function update(CountryRequest $request, Country $country)
     {
-        $country->country_name = $request->input('country');
+        $this->service->countryUpdate($request, $country);
         
-        $country->save();
-        
-        return redirect('/home');
+        return redirect('/main');
     }
 
     /**
@@ -77,7 +71,7 @@ class CountryController extends Controller
     public function destroy(Country $country)
     {
         $country->delete();
-        return redirect('/home');
+        return redirect('/main');
     }
 
     /**

@@ -7,7 +7,7 @@ use App\Models\Location;
 use App\Models\Regions;
 use Illuminate\Http\Request;
 
-class LocationController extends Controller
+class LocationController extends BaseController
 {
     /**
      * Show the form for creating a new resource.
@@ -35,7 +35,7 @@ class LocationController extends Controller
         
         $location->save();
         
-        return redirect('/home');
+        return redirect('/main');
     }
 
     /**
@@ -56,7 +56,7 @@ class LocationController extends Controller
      * @param  \App\Models\Country  $country
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, )
+    public function update(Request $request)
     {
     }
 
@@ -69,7 +69,7 @@ class LocationController extends Controller
     public function destroy(Location $location)
     {
         $location->delete();
-        return redirect('/home');
+        return redirect('/main');
     }
 
     /**
