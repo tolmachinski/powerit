@@ -15,10 +15,12 @@ class MainController extends Controller
      */
     public function index()
     {
-        $countries = Country::all();
+        // $countries = Country::all();
 
-        return view('index', [
-            'countries' => $countries,
-        ]);
+        // return view('index', [
+        //     'countries' => $countries,
+        // ]);
+
+        return response()->json(Country::all(), 200);
     }
 }

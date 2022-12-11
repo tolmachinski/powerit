@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 */
 Auth::routes(['verify' => true]);
 
-Route::resource('main', MainController::class)->middleware('auth');
+// Route::resource('main', MainController::class)->middleware('auth');
 Route::resource('country', CountryController::class)->middleware('auth');
 Route::resource('region', RegionController::class)->middleware('auth');
 Route::resource('location', LocationController::class)->middleware('auth');
